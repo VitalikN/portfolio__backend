@@ -3,8 +3,8 @@ const Joi = require('joi');
 const { HandleMongooseError } = require('../helpers');
 
 const typeList = [
-  'Onepage',
   'Landing Page',
+  'Website - business cards',
   'Website with Admin Panel',
   'Online Store',
 ];
