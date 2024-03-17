@@ -4,7 +4,7 @@ const { HandleMongooseError } = require('../helpers');
 
 const emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-const adminSchema = new Schema(
+const authSchema = new Schema(
   {
     name: {
       type: 'string',
@@ -19,31 +19,30 @@ const adminSchema = new Schema(
     },
     password: {
       type: 'string',
-
       minLength: 6,
       required: true,
     },
   },
   { timestamps: true, versionKey: false }
 );
-
-adminSchema.post('save', HandleMongooseError);
-
-const registerSchema = Joi.object({
+const authRegisterSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().pattern(emailFormat).required(),
   password: Joi.string().min(6).required(),
 });
-
-const loginSchema = Joi.object({
+const authLoginSchema = Joi.object({
   email: Joi.string().pattern(emailFormat).required(),
   password: Joi.string().min(6).required(),
 });
 const schemas = {
-  loginSchema,
-  registerSchema,
+  authRegisterSchema,
+  authLoginSchema,
 };
+authSchema.post('save', HandleMongooseError);
 
-const Admin = model('admin', adminSchema);
+const User = model('user', authSchema);
 
-module.exports = { Admin, schemas };
+module.exports = {
+  User,
+  schemas,
+};

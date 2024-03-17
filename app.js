@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const portfolioRouter = require('./routes/api/portfolio');
 const adminRouter = require('./routes/api/admin');
+const authRouter = require('./routes/api/auth');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use('/api/portfolio', portfolioRouter);
 
 app.use('/api/admin', adminRouter);
+app.use('/api/auth', authRouter);
 
 app.use((req, res) => {
   res.status(404).json({
