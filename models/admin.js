@@ -19,9 +19,12 @@ const adminSchema = new Schema(
     },
     password: {
       type: 'string',
-
       minLength: 6,
       required: true,
+    },
+    tokenAdmin: {
+      type: 'string',
+      default: '',
     },
   },
   { timestamps: true, versionKey: false }

@@ -8,6 +8,7 @@ const typeList = [
   'Website with Admin Panel',
   'Online Store',
 ];
+
 const portfolioSchema = new Schema(
   {
     title: {
@@ -27,6 +28,16 @@ const portfolioSchema = new Schema(
       type: String,
       required: true,
     },
+    urlCode: {
+      type: String,
+      required: true,
+    },
+
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'admin',
+      required: true,
+    },
   },
 
   { versionKey: false, timestamps: true }
@@ -38,6 +49,7 @@ const addSchema = Joi.object({
     .valid(...typeList)
     .required(),
   url: Joi.string().required(),
+  urlCode: Joi.string().required(),
 });
 
 const schemas = {

@@ -22,6 +22,10 @@ const authSchema = new Schema(
       minLength: 6,
       required: true,
     },
+    token: {
+      type: String,
+      default: '',
+    },
   },
   { timestamps: true, versionKey: false }
 );

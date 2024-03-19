@@ -17,12 +17,14 @@ const login = async (req, res, model) => {
 
   if (!passwordCompare) throw HttpError(401, 'Email or password invalid');
   const payload = {
-    id: entity.id,
+    _id: entity._id,
   };
 
   const tokenKey = model === User ? 'token' : 'tokenAdmin';
 
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '23h' });
+
+  await model.findByIdAndUpdate(entity._id, { [tokenKey]: token });
 
   res.json({ [tokenKey]: token, email: entity.email, name: entity.name });
 };

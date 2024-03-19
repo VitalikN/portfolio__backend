@@ -1,7 +1,12 @@
 const express = require('express');
-const { validateBody } = require('../../middlewares');
+const { validateBody, authenticateUser } = require('../../middlewares');
 const { schemas } = require('../../models/auth');
-const { authRegister, authLogin } = require('../../controllers/auth');
+const {
+  authRegister,
+  authLogin,
+  authCurrent,
+  authLogout,
+} = require('../../controllers/auth');
 const router = express.Router();
 
 router.post(
@@ -14,5 +19,9 @@ router.post(
   validateBody(schemas.authLoginSchema),
   authLogin.loginUser
 );
+
+router.get('/current', authenticateUser, authCurrent.getCurrent);
+
+router.post('/logout', authenticateUser, authLogout.logoutUser);
 
 module.exports = router;
