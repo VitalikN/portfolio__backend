@@ -26,6 +26,10 @@ const adminSchema = new Schema(
       type: 'string',
       default: '',
     },
+    avatarURL: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true, versionKey: false }
 );
