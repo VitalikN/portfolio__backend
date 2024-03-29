@@ -17,7 +17,6 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/api/portfolio', portfolioRouter);
-
 app.use('/api/admin', adminRouter);
 app.use('/api/auth', authRouter);
 

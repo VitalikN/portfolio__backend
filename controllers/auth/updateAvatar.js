@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs/promises');
 const { Admin } = require('../../models/admin');
 
-const avatarsDir = path.join(__dirname, '../', 'public', 'avatars');
+const avatarsDir = path.resolve(__dirname, '../', 'public', 'avatars');
 
 const updateAvatar = async (req, res) => {
   const { _id } = req.admin;

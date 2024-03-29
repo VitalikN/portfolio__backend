@@ -2,7 +2,7 @@ const express = require('express');
 const {
   validateBody,
   authenticate,
-  authenticateUser,
+
   upload,
 } = require('../../middlewares');
 const { schemas } = require('../../models/admin');
