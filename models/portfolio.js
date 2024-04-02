@@ -20,15 +20,15 @@ const portfolioSchema = new Schema(
       enum: typeList,
       required: true,
     },
-    // img: {
-    //   type: String,
-    //   required: [true, 'images is required'],
-    // },
+    img: {
+      type: [String],
+      required: true,
+    },
     url: {
       type: String,
       required: true,
     },
-    urlCode: {
+    urlGithub: {
       type: String,
       required: true,
     },
@@ -49,7 +49,7 @@ const addSchema = Joi.object({
     .valid(...typeList)
     .required(),
   url: Joi.string().required(),
-  urlCode: Joi.string().required(),
+  urlGithub: Joi.string().required(),
 });
 
 const schemas = {
