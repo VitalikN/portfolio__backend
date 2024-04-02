@@ -30,7 +30,9 @@ router.post('/logout', authenticate, authLogout.logoutAdmin);
 router.patch(
   '/avatars',
   authenticate,
-  upload.single('avatar'),
+  // upload.single('avatar'),
+  upload.fields([{ name: 'avatar', maxCount: 1 }]),
+
   update.updateAvatar
 );
 
