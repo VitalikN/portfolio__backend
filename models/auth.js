@@ -30,6 +30,15 @@ const authSchema = new Schema(
       type: String,
       required: true,
     },
+    // верифікація емейла
+    // verify: {
+    //   type: Boolean,
+    //   default: false,
+    // },
+    // verificationCode: {
+    //   type: String,
+    // },
+    // //
   },
   { timestamps: true, versionKey: false }
 );

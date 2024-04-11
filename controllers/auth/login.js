@@ -11,7 +11,11 @@ const login = async (req, res, model) => {
   const { email, password } = req.body;
   const entity = await model.findOne({ email }, '-createdAt -updatedAt');
 
-  if (!entity) throw HttpError(401, 'Email or password invalid');
+  if (
+    !entity
+    // || !entity.verify
+  )
+    throw HttpError(401, 'Email or password invalid');
 
   const passwordCompare = await bcrypt.compare(password, entity.password);
 
