@@ -30,7 +30,7 @@ const authSchema = new Schema(
       type: String,
       required: true,
     },
-    // верифікація емейла
+    // // верифікація емейла
     // verify: {
     //   type: Boolean,
     //   default: false,
